@@ -1,4 +1,5 @@
 class Patron
+  lists = []
   attr_reader(:name, :patron_id)
 
   def initialize(attributes)
@@ -19,7 +20,7 @@ class Patron
   end
 # dd
   def save
-    result = DB.exec("INSERT INTO patrons (name) VALUES ('#{@name}',) RETURNING patron_id;")
+    result = DB.exec("INSERT INTO patrons (name) VALUES ('#{@name}') RETURNING patron_id;")
     @patron_id = result.first().fetch("patron_id").to_i()
   end
 

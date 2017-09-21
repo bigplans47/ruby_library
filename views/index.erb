@@ -1,6 +1,21 @@
 <h1>Welcome to the Library</h1>
 
+<form action="/" method="post">
+  <div class="form-group">
+    <label for="name" class="form-label">Enter your name to make account</label>
+    <input type="text" name="name" class"form-control" id="name" placeholder="my name">
+    <button type="submit" class="button btn">Make Account</button>
+  </div>
+</form>
+
 <div class="container">
   <a href="/make_patron">Add a new patron</a>
   <a href="/make_book">Add book to catalog</a>
 </div>
+
+
+<% if @patron_list.any?()%>
+  <% @patron_list.each() do |patronz|%>
+  <li><%= patronz.name()%></li>
+<% end %>
+<% end %>

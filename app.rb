@@ -1,7 +1,7 @@
 require('sinatra')
 require('sinatra/reloader')
-require('./lib/task')
-require('./lib/list')
+require('./lib/book')
+require('./lib/patron')
 also_reload('lib/**/*.rb')
 require('pg')
 require('pry')
@@ -9,8 +9,19 @@ require('pry')
 DB = PG.connect({:dbname => 'library_test'})
 
 get("/") do
+  @patron_list = Patron.all()
+  # binding.pry
   erb(:index)
 end
+
+post("/") do
+  name = params.fetch("name")
+  patron = Patron.new({:name => name, :patron_id => nil})
+  patron.save()
+  @patron_list = Patron.all()
+  erb(:index)
+end
+
 
 # get("/lists/new") do
 #   erb(:list_form)
