@@ -1,0 +1,16 @@
+<!-- form to create patron goes here -->
+<!-- first name -->
+<!-- last name -->
+<h2>Make a patron below</h2>
+<form class="form-control" action="/make_patron" method="post">
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name">
+
+  <button type="submit" name="patron_button">Add Patron</button>
+</form>
+
+<h2>Patron List</h2>
+
+<ul>
+  <li><a href="/make_patron/<%= @patron.id() %>">Edit <%= @patron.name() %> </a></li>
+</ul>

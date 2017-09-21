@@ -1,0 +1,13 @@
+<h2>Add a book to the catalog below</h2>
+<form class="form-control" action="/make_book" method="post">
+  <label for="book">Book</label>
+  <input type="text" book="book" id="book">
+
+  <button type="submit" name="book_button">Add Book</button>
+</form>
+
+<h2>Catalog</h2>
+
+<ul>
+  <li><a href="/make_book/<%= @book.id() %>">Edit <%= @book.title() %> </a></li>
+</ul>
