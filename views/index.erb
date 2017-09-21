@@ -9,13 +9,14 @@
 </form>
 
 <div class="container">
-  <a href="/make_patron">Add a new patron</a>
   <a href="/make_book">Add book to catalog</a>
 </div>
 
 
 <% if @patron_list.any?()%>
   <% @patron_list.each() do |patronz|%>
-  <li><%= patronz.name()%></li>
+  <a href='/patron_display/<%= patronz.patron_id %>'><li><%= patronz.name()%></li></a>
+  <% end %>
 <% end %>
-<% end %>
+
+<%= @patron_listzz %>

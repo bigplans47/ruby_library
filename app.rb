@@ -10,6 +10,7 @@ DB = PG.connect({:dbname => 'library_test'})
 
 get("/") do
   @patron_list = Patron.all()
+  @patron_listzz = Patron.all()
   # binding.pry
   erb(:index)
 end
@@ -20,6 +21,20 @@ post("/") do
   patron.save()
   @patron_list = Patron.all()
   erb(:index)
+end
+
+get("/make_book") do
+  @book_list = Book.all()
+  erb(:make_book)
+end
+
+post("/make_book") do
+  title = params.fetch("title")
+  author = params.fetch("author")
+  new_book = Book.new({:title => title, :author => author, :book_id => nil})
+  new_book.save()
+  @book_list = Book.all()
+  erb(:make_book)
 end
 
 

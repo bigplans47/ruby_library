@@ -1,13 +1,24 @@
 <h2>Add a book to the catalog below</h2>
-<form class="form-control" action="/make_book" method="post">
-  <label for="book">Book</label>
-  <input type="text" book="book" id="book">
 
-  <button type="submit" name="book_button">Add Book</button>
+<form action="/make_book" method="post">
+  <div class="form-group">
+    <label for="title" class="form-label">Enter your book title</label>
+    <input type="text" name="title" class"form-control" id="title" placeholder="my name">
+  </div>
+  <div class="form-group">
+    <label for="author" class="form-label">Enter your author name</label>
+    <input type="text" name="author" class"form-control" id="author" placeholder="my name">
+  </div>
+  <button type="submit" class="button btn">Make Book</button>
 </form>
 
-<h2>Catalog</h2>
+<div class="container">
+  <a href="/">Return Home</a>
+</div>
 
-<ul>
-  <li><a href="/make_book/<%= @book.id() %>">Edit <%= @book.title() %> </a></li>
-</ul>
+
+<% if @book_list.any?()%>
+  <% @book_list.each() do |single_book|%>
+  <a href='/make_book/<%= single_book.book_id %>'><li><%= single_book.title()%></li></a>
+  <% end %>
+<% end %>
