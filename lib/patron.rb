@@ -30,7 +30,7 @@ class Patron
 
   # dk
   def save22
-    result = DB.exec("INSERT INTO checkouts (patron_id) VALUES ('#{@da_id}') RETURNING check_id;")
+    result = DB.exec("INSERT INTO checkouts (patron_id) VALUES ('#{self.patron_id}') RETURNING check_id;")
     # @check_id = result.first().fetch("check_id").to_i()
   end
 

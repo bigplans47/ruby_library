@@ -45,6 +45,7 @@ describe(Patron) do
       @test_patron.save()
       @da_id= @test_patron.patron_id
 # binding.pry
+
       @test_patron.save22()
 binding.pry
       stuff= nil
