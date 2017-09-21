@@ -37,6 +37,12 @@ post("/make_book") do
   erb(:make_book)
 end
 
+get("/patron_display/:patron_id") do
+  @patron_list = Patron.all()
+  # binding.pry
+  erb(:patron_display)
+end
+
 
 # get("/lists/new") do
 #   erb(:list_form)
