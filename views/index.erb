@@ -12,10 +12,14 @@
   <a href="/make_book">Add book to catalog</a>
 </div>
 
+<div class="container">
+  <a href="/checkout_book">Checkout book</a>
+</div>
+
 
 <% if @patron_list.any?()%>
   <% @patron_list.each() do |patronz|%>
-  <a href='/patron_display/<%= patronz.patron_id %>'><li><%= patronz.name()%></li></a>
+  <a href=<%'/patron_display/<%= patronz.patron_id %>'><li><%= patronz.name()%></li></a>
   <% end %>
 <% end %>
 

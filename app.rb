@@ -43,6 +43,10 @@ get("/patron_display/:patron_id") do
   erb(:patron_display)
 end
 
+get("/checkout_book") do
+  # patron_list =
+  erb(:checkout_book)
+end
 
 # get("/lists/new") do
 #   erb(:list_form)
