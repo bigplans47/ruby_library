@@ -47,9 +47,11 @@ describe(Patron) do
 # binding.pry
 
       @test_patron.save22()
+      @checkout_id = @test_patron.save22()[0].fetch("check_id")
+
 binding.pry
       stuff= nil
-      output2 = DB.exec("SELECT * FROM checkouts WHERE patron_id = #{@test_patron.patron_id} ;")
+      output2 = DB.exec("SELECT * FROM checkouts WHERE patron_id = '#{self.patron_id}' RETURNING check_id;")
       # output2.each do |result2|
       #   stuff = result2.patron_id
       #   return stuff
