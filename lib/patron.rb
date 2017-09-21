@@ -28,6 +28,12 @@ class Patron
   #   # binding.pry
   # end
 
+  # dk
+  def save22
+    result = DB.exec("INSERT INTO checkouts (patron_id) VALUES ('#{@da_id}') RETURNING check_id;")
+    # @check_id = result.first().fetch("check_id").to_i()
+  end
+
   def ==(another_patron)
     self.name().==(another_patron.name()).&(self.patron_id().==(another_patron.patron_id()))
   end
@@ -45,6 +51,15 @@ class Patron
   def checkout_patron
     result = DB.exec("INSERT INTO checkouts (patron_id) VALUES ('#{@patron_id}');")
     @patron_id = result.first().fetch("patron_id").to_i()
+  end
+
+  #sl
+  def checkout_patron2(patron_id)
+    Patron.all().each() do |patron|
+      if result = DB.exec("INSERT INTO checkouts (patron_id) VALUES ('#{@patron_id}');")
+      @patron_id = result.first().fetch("patron_id").to_i()
+      end
+    end
   end
 
 end

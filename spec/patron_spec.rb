@@ -2,6 +2,7 @@ require("rspec")
 require("pg")
 require("patron")
 require('spec_helper')
+require('pry')
 
 DB = PG.connect({:dbname => "library_test"})
 
@@ -40,10 +41,22 @@ describe(Patron) do
   describe("#checkout_patron") do
     it("will add patron id to the checkouts table") do
       # @the_pat_id = params.fetch("patron_id")
-      @test_patron = Patron.new({:name => "John Snow", :patron_id => 1})
+      @test_patron = Patron.new({:name => "John Snow", :patron_id => nil})
       @test_patron.save()
-      # checkout_patron_id = 1
-      expect(@test_patron.patron_id).to(eq(DB.exec("SELECT patron_id FROM checkouts WHERE patron_id = #{@test_patron.patron_id} ;")))
+      @da_id= @test_patron.patron_id
+# binding.pry
+      @test_patron.save22()
+binding.pry
+      stuff= nil
+      output2 = DB.exec("SELECT * FROM checkouts WHERE patron_id = #{@test_patron.patron_id} ;")
+      # output2.each do |result2|
+      #   stuff = result2.patron_id
+      #   return stuff
+      # end
+
+
+
+      expect(@test_patron.patron_id).to(eq(DB.exec("SELECT patron_id FROM checkouts WHERE patron_id == #{@test_patron.patron_id} ;")))
     end
   end
 
