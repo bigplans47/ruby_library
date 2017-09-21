@@ -42,6 +42,11 @@ class Patron
     found_patron_list
   end
 
+  def checkout_patron
+    result = DB.exec("INSERT INTO checkouts (patron_id) VALUES ('#{@patron_id}');")
+    @patron_id = result.first().fetch("patron_id").to_i()
+  end
+
 end
 
 #   def self.all

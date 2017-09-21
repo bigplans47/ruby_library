@@ -3,6 +3,8 @@ require("pg")
 require("patron")
 require('spec_helper')
 
+DB = PG.connect({:dbname => "library_test"})
+
 describe(Patron) do
 
   # describe("#save") do
@@ -32,6 +34,29 @@ describe(Patron) do
 
     end
   end
+
+# expect(test_patron.patron_id).to(eq(DB.exec("SELECT patron_id FROM checkouts WHERE patron_id == test_patron.patron_id ;").to_i))
+# sl
+  describe("#checkout_patron") do
+    it("will add patron id to the checkouts table") do
+      # @the_pat_id = params.fetch("patron_id")
+      @test_patron = Patron.new({:name => "John Snow", :patron_id => 1})
+      @test_patron.save()
+      # checkout_patron_id = 1
+      expect(@test_patron.patron_id).to(eq(DB.exec("SELECT patron_id FROM checkouts WHERE patron_id = #{@test_patron.patron_id} ;")))
+    end
+  end
+
+
+  # describe("#checkout_patron") do
+  #   it("will add patron id to the checkouts table") do
+  #     # @the_pat_id = params.fetch("patron_id")
+  #     test_patron = Patron.new({:name => "John Snow", :patron_id => 1})
+  #     test_patron.save()
+  #     # checkout_patron_id = 1
+  #     expect(test_patron.patron_id).to(eq(DB.exec("SELECT patron_id FROM checkouts WHERE patron_id == test_patron.patron_id ;").to_i))
+  #   end
+  # end
   #
   # describe("#save") do
   #   it("adds a task to the array of saved tasks") do

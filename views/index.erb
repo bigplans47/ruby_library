@@ -19,7 +19,7 @@
 
 <% if @patron_list.any?()%>
   <% @patron_list.each() do |patronz|%>
-  <a href=<%'/patron_display/<%= patronz.patron_id %>'><li><%= patronz.name()%></li></a>
+  <a href='/patron_display/<%= patronz.patron_id %>'><li><%= patronz.name()%></li></a>
   <% end %>
 <% end %>
 
