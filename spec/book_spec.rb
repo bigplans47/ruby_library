@@ -1,24 +1,24 @@
 require('rspec')
 require('pg')
-require('list')
+require('book')
 require('spec_helper')
 
-describe(List) do
-  describe(".all") do
-    it("starts off with no lists") do
-      expect(Book.all()).to(eq([]))
-    end
-  end
-
-  describe("#save") do
-    it("lets you save books to the catalog") do
-      book = Book.new({:title => "American Gods", :author => "Neil Gaiman" :id => nil})
-      book.save()
-      expect(Book.all()).to(eq([book]))
-    end
-  end
-
-end
+# describe(List) do
+#   describe(".all") do
+#     it("starts off with no lists") do
+#       expect(Book.all()).to(eq([]))
+#     end
+#   end
+#
+#   describe("#save") do
+#     it("lets you save books to the catalog") do
+#       book = Book.new({:title => "American Gods", :author => "Neil Gaiman" :id => nil})
+#       book.save()
+#       expect(Book.all()).to(eq([book]))
+#     end
+#   end
+#
+# end
 
   # describe("#name") do
   #   it("tells you its name") do

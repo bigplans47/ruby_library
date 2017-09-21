@@ -1,22 +1,37 @@
 require("rspec")
 require("pg")
-require("task")
+require("patron")
 require('spec_helper')
 
-describe(Task) do
+describe(Patron) do
 
-  describe("#save") do
-    it("lets you save lists to the database") do
-      list = List.new({:name => "Epicodus Stuff", :id => nil})
-      list.save()
-      expect(List.all()).to(eq([list]))
-    end
-  end
+  # describe("#save") do
+  #   it("lets you save lists to the database") do
+  #     list = List.new({:name => "Epicodus Stuff", :id => nil})
+  #     list.save()
+  #     expect(List.all()).to(eq([list]))
+  #   end
+  # end
+  #
   # describe(".all") do
   #   it("is empty at first") do
   #     expect(Task.all()).to(eq([]))
   #   end
   # end
+
+  describe(".find") do
+    it("find a patron in the patron list") do
+      test_patron = Patron.new({:name => "John Snow", :patron_id => 1})
+      test_patron.save()
+      test_patron2 = Patron.new({:name=> "Jamie Lanister", :patron_id => 2})
+      test_patron2.save()
+      z= Patron.find(test_patron2.patron_id)
+      # x = z.patron_id
+      # binding.pry
+      expect(Patron.find(test_patron2.patron_id)).to(eq(test_patron2))
+
+    end
+  end
   #
   # describe("#save") do
   #   it("adds a task to the array of saved tasks") do

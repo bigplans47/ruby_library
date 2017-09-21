@@ -6,7 +6,6 @@ class Patron
     @name = attributes.fetch(:name)
     @patron_id = attributes.fetch(:patron_id)
   end
-
 # dd
   def self.all
     total_patrons = DB.exec("SELECT * FROM patrons;")
@@ -22,6 +21,25 @@ class Patron
   def save
     result = DB.exec("INSERT INTO patrons (name) VALUES ('#{@name}') RETURNING patron_id;")
     @patron_id = result.first().fetch("patron_id").to_i()
+  end
+
+  # def self.find(patron_id)
+  #   my_patron = DB.exec("SELECT * FROM patrons WHERE patron_id = patron_id;")
+  #   # binding.pry
+  # end
+
+  def ==(another_patron)
+    self.name().==(another_patron.name()).&(self.patron_id().==(another_patron.patron_id()))
+  end
+
+  def self.find(patron_id)
+    found_patron_list = nil
+    Patron.all().each() do |patron|
+      if patron.patron_id().==(patron_id)
+        found_patron_list = patron
+      end
+    end
+    found_patron_list
   end
 
 end

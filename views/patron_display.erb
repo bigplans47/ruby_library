@@ -1,11 +1,15 @@
-<!-- form to create patron goes here -->
-<!-- first name -->
-<!-- last name -->
-<h2>Hey your name and everyones' is </h2>
+
+<h2>Hey your name is </h2>
 
 
   <% if @patron_list.any?() %>
     <% @patron_list.each() do |patronz| %>
-    <%= patronz.name() %>
+    <% if patronz.patron_id == Patron.find(@patron_id).patron_id %>
+      <%= patronz.name %>
+      <% end %>
     <% end %>
   <% end %>
+
+  <div class="container">
+    <a href="/">Return Home</a>
+  </div>

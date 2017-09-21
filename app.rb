@@ -39,7 +39,7 @@ end
 
 get("/patron_display/:patron_id") do
   @patron_list = Patron.all()
-  # binding.pry
+  @patron_id = params[:patron_id].to_i
   erb(:patron_display)
 end
 
